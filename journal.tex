@@ -1,0 +1,31 @@
+\documentclass{tufte-book}
+\usepackage{lipsum, hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=cyan,
+}
+
+\geometry{
+  left=0.5in,
+  right=1.5in, % larger than left to fit the date entry
+  marginparsep=8.2mm, % gutter between main text block and margin notes
+  marginparwidth=49.4mm % width of margin notes
+}
+
+\newenvironment{logentry}[2] % date, heading
+{\noindent\textbf{#2}\marginnote{#1}\\}{\vspace{0.5cm}}
+% {\noindent\textbf{#2}\marginnote{#1}\\}{\newpage} % uncomment this is if you want each journal entry on a new page
+
+\begin{document}
+
+\begin{logentry}{2018-Mar-31}{This is an entry}
+  And here you can write your journal entry.
+\end{logentry}
+
+\begin{logentry}{2018-Mar-30}{An older entry}
+  Wow. Look at this older entry!
+\end{logentry}
+
+\end{document}

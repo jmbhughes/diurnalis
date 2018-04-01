@@ -1,8 +1,14 @@
 # diurnalis
-A tool to understand and analyze my LaTeX journal.
+I keep my journal and research logs in a LaTeX file because LaTeX is absolutely amazing. [Here](journal.tex) is the LaTeX template and the [pdf file](journal.pdf) that it compiles.
 
-The `Beeminder.py` updates my personal Beeminder goal and records today's writing.
+More tools will be created over time to accompany it. Right now, there is a [reader](Reader.py) built in Python that extracts the entries separately for analysis. This will allow for the creation of interesting graphics and exploring patterns in the writing.
 
-TODO:
+## Beemind
+[Beeminder](https://www.beeminder.com/overview) is "goal-tracking with teeth." you can track habits and keep them on track with flexible goals. If you miss a goal, you pay a small sum of money. I want to keep track of my journaling to encourage myself to meet a daily minimum. The [Beemind.py](Beemind.py) script will read in the journal and push your daily writing up to Beeminder using an API call. I run it daily at a set time with crontab. 
+
+## TODO
 - Make the Beeminder.py script update all the previous days as well so that everything is always fresh.
 - Determine if the update command will create a new datapoint if none exists
+
+## The name?
+[Diurnalis](https://en.wiktionary.org/wiki/diurnalis) is an [obsolete term](http://www.yourdictionary.com/diurnalis) for a journal or diary. 

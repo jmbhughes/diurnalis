@@ -22,8 +22,7 @@ class JournalEntry:
         return entry
     
 class Reader():
-    ''' A utility to read the LaTex journal '''
-    
+    ''' A utility to read the LaTex journal '''    
     def __init__(self, path):
         ''' creates and runs a reader object from the file path to the journal '''
         self.path = path
