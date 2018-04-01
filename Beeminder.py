@@ -4,7 +4,7 @@ from Reader import Reader
 
 def get_auth_token():
     ''' Loads the authorization token from a local file'''
-    with open("auth.txt", "r") as f:
+    with open("/home/marcus/grive/codedungeon/diurnalis/auth.txt", "r") as f:
         l = f.readlines()
     return l[1][:-1]
 
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     # Load and process the journal, getting the most recent entry
     journal_path = "/home/marcus/grive/journal/journal.tex"
     reader = Reader(journal_path)
-    entry = reader.get_most_recent_entry()
+    entry = reader.get_most_recent_entry()[0]
 
     # If the entry is today, update Beeminder with it otherwise report no writing
     is_today = entry.date.date() == datetime.today().date()
