@@ -4,6 +4,7 @@ import requests
 
 AUTH_FILE = "/home/marcus/grive/codedungeon/diurnalis/auth.txt"
 GOAL_URL="https://www.beeminder.com/api/v1/users/jmbhughes/goals/journal/datapoints.json"
+JOURNAL_PATH =  "/home/marcus/grive/journal/journal.tex"
 
 def get_auth_token(auth_file=AUTH_FILE):
     ''' Loads the authorization token from a local file'''
@@ -40,7 +41,6 @@ class BeeminderAPI:
                 'auth_token':self.auth_token,
                 'timestamp':timestamp}
         datapoint_url = self.goal_url.replace(".json","/{}.json".format(id))
-        print(datapoint_url)
         requests.put(datapoint_url, data=data)
         
     def _get_datapoints(self):
@@ -57,7 +57,6 @@ class JournalBeeminderUpdater(BeeminderAPI):
         ''' update the n most recent data points '''
         for entry in self.journal.get_most_recent_entry(n=n):
             if self._datapoint_exists(entry.date.timestamp()):
-                print("updating {} to {}".format(entry.date, len(entry)))
                 self.update_datapoint(entry.date.timestamp(), len(entry))
             else:
                 self.post_datapoint(len(entry), timestamp=entry.date.timestamp())        
@@ -67,7 +66,7 @@ if __name__ == "__main__":
     auth_token = get_auth_token()
 
     # Load and process the journal, getting the most recent entry
-    journal_path = "/home/marcus/grive/journal/journal.tex"
+    journal_path = JOURNAL_PATH
     journal = Reader(journal_path)
 
     # Interface with Beeminder and make update
