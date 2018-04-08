@@ -2,9 +2,22 @@ import os
 from Reader import Reader
 import requests
 
+#------------------------------------------------------------------------------------------
+# Edit these for your task!
+
+# path to your authentication
 AUTH_FILE = "/home/marcus/grive/codedungeon/diurnalis/auth.txt"
-GOAL_URL="https://www.beeminder.com/api/v1/users/jmbhughes/goals/journal/datapoints.json"
+
+# your beeminder details (other than authentication)
+USERNAME = "jmbhughes"
+GOAL_SLUG = "journal"
+
+# path to your journal 
 JOURNAL_PATH =  "/home/marcus/grive/journal/journal.tex"
+
+#Nothing below this line needs updating.
+#------------------------------------------------------------------------------------------
+GOAL_URL="https://www.beeminder.com/api/v1/users/{}/goals/{}/datapoints.json".format(USERNAME, GOAL_SLUG)
 
 def get_auth_token(auth_file=AUTH_FILE):
     ''' Loads the authorization token from a local file'''

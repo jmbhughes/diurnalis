@@ -8,9 +8,11 @@ More tools will be created over time to accompany it. Right now, there is a [rea
 ```
 0  *  *  *  * python /home/marcus/diurnalis/Beeminder.py
 ```
+For the Beeminder portion, you will need to update the all-caps variables at the top of [Beeminder.py](Beeminder.py) for your use. You will also need to create an `auth.txt` file which has two lines: the first being your Beeminder username and the second being your Beeminder authentication token, which you can find in the [documentation](http://api.beeminder.com/#personal-authentication-token).
 
 ## TODO
-- add new features. what's needed? 
+- add new features. what's needed?
+- clean up the `auth.txt` so there's just one config file for username and goal_slug and authentication_token etc and with a parameterized version of `Beemind.py` so it can run on different tasks
 
 ## The name?
 [Diurnalis](https://en.wiktionary.org/wiki/diurnalis) is an [obsolete term](http://www.yourdictionary.com/diurnalis) for a journal or diary. 
