@@ -29,7 +29,9 @@ class Reader():
         self._read()
         
     def _read(self):
-        ''' read in the journal and break the entries into pieces '''
+        ''' read in the journal and break the entries into pieces 
+            entries are ordered by date, most recent to least
+        '''
         with open(self.path) as f: data = f.read()
         self.starts = [m.end() for m in re.finditer("begin{logentry}", data)] #lines for log entry beginnings
         self.ends = [m.start() for m in re.finditer("end{logentry}", data)] # lines for log entry endings
@@ -42,15 +44,17 @@ class Reader():
             contents = "\n".join(entry_string.split("\n")[1:])
             entry = JournalEntry(title, date, contents)
             self.entries.append(entry)
-
+        self.entries  = sorted(self.entries, key=lambda entry: entry.date, reverse=True)
+        
     def get_journal_entries(self):
         ''' return the list of journal entry objects '''
         return self.entries
 
     def get_most_recent_entry(self, n=1):
         ''' Get the n-most recent journal entry '''
-        return sorted(self.entries, key=lambda entry: entry.date, reverse=True)[:n]
-    
+        return self.entries[:n]
+        #return sorted(self.entries, key=lambda entry: entry.date, reverse=True)[:n]
+
 class Explorer():
     ''' A utility to find interesting patterns in the parsed journal '''
     def __init__(self, journal_entries):
