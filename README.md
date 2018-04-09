@@ -6,7 +6,7 @@ More tools will be created over time to accompany it. Right now, there is a [rea
 ## Beemind
 [Beeminder](https://www.beeminder.com/overview) is "goal-tracking with teeth." you can track habits and keep them on track with flexible goals. If you miss a goal, you pay a small sum of money. I want to keep track of my journaling to encourage myself to meet a daily minimum. The [Beemind.py](Beemind.py) script will read in the journal and push your daily writing up to Beeminder using an API call. I run it periodically at a set time with crontab.
 ```
-0  *  *  *  * python /home/marcus/diurnalis/Beeminder.py
+0  *  *  *  * python /home/marcus/diurnalis/Beeminder.py /home/marcus/journal/config-journal.json
 ```
 
 ### Configuration
