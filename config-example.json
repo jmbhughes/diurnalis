@@ -1,0 +1,10 @@
+{
+    "BEEMINDER": {
+        "USERNAME": "YOUR USER NAME",
+        "AUTH_TOKEN": "YOUR AUTH TOKEN"
+        "GOAL_SLUG": "NAME OF YOUR GOAL"
+    },
+    "LOCAL": {
+        "JOURNAL_PATH": "PATH TO YOUR JOURNAL"
+    }
+}
