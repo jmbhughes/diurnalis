@@ -1,3 +1,4 @@
+#!/home/marcus/bin/python
 import os
 from Reader import Reader
 import requests
@@ -15,7 +16,7 @@ class BeeminderAPI:
         ''' determines if a datapoint already exists for that timestamp '''
         return timestamp in self.datapoints    
 
-    def post_datapoint(self, value, timestamp=None):
+    def create_datapoint(self, value, timestamp=None):
         ''' Post a new data point with a request 
         @param value : the value being updated
         @param timestamp : the standard datetime timestamp
@@ -57,7 +58,7 @@ class JournalBeeminderUpdater(BeeminderAPI):
             if self._datapoint_exists(entry.date.timestamp()):
                 self.update_datapoint(entry.date.timestamp(), len(entry))
             else:
-                self.post_datapoint(len(entry), timestamp=entry.date.timestamp())        
+                self.create_datapoint(len(entry), timestamp=entry.date.timestamp())        
         
 if __name__ == "__main__":
     # get the arguments
